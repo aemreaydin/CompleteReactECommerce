@@ -55,15 +55,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     render() {
-        return (
-            <div className="menu">
-            {
-                this.state.sections.map(({id, title, imageUrl}) => (
-                    <MenuItem key={id} title={title} imageUrl={imageUrl}/>
-                ))
-            }
-            </div>
-        )
+      return (
+          <div className="menu">
+          {
+              this.state.sections.map(({id, title, imageUrl, linkUrl}) => (
+                  <MenuItem key={id} title={title} imageUrl={imageUrl} linkUrl={linkUrl}/>
+              ))
+          }
+          </div>
+      )
     }
 }
 export default Menu;
