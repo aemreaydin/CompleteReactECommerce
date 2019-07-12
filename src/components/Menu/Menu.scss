@@ -1,0 +1,13 @@
+@import '../../scss/Palette';
+.menu {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 1rem;
+    height: 95vh;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

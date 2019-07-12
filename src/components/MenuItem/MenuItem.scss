@@ -1,0 +1,89 @@
+@import '../../scss/Palette';
+.menu {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        align-self: stretch;
+        // border: .1rem solid $color-grey-600;
+        border-radius: .3rem;
+
+        overflow: hidden;
+
+        cursor: pointer;
+
+        transform: translateZ(0);
+
+        &:hover > .menu__image {
+            transform: scale(1.04);
+        }
+
+        &:hover > .menu__content {
+            opacity: .9;
+        }
+
+        &--hats {
+            grid-column: span 2;
+            grid-row: span 4;
+        }
+        &--jackets {
+            grid-column: span 2;
+            grid-row: span 4;
+        }
+        &--sneakers {
+            grid-column: span 2;
+            grid-row: span 4;
+        }
+        &--womens {
+            grid-column: span 3;
+            grid-row: span 6;
+        }
+        &--mens {
+            grid-column: span 3;
+            grid-row: span 6;
+        }
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // max-width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        transform: translateZ(0);
+        transition: transform .4s ease-out;
+    }
+
+    &__content {
+        padding: 2rem;
+        // border: .1rem solid $color-grey-600;
+        border-radius: .3rem;
+
+        background-color: $color-grey-200;
+        opacity: .8;
+
+        transition: opacity .4s ease-out;
+
+        & > *:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+    &__title {
+        color: $color-grey-900;
+        font-size: 4rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        // font-variant: small-caps;
+    }
+    &__subtitle {
+        color: $color-grey-900;
+        font-size: 2rem;
+        font-weight: lighter;
+        text-transform: uppercase;
+    }
+}
