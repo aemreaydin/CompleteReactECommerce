@@ -1,0 +1,23 @@
+@import '../../scss/Palette';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    // align-items: flex-end;
+    align-items: center;
+
+    margin-bottom: 2.4rem;
+
+    &-nav__link {
+        background: transparent;
+
+
+        font-family: inherit;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+
+        &:not(:first-child) {
+            margin-left: 2rem;
+        }
+    }
+}
