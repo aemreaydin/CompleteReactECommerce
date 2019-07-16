@@ -1,0 +1,16 @@
+.shop-item {
+    display: flex;
+    // height: 300px;
+    position: relative;
+
+    // grid-column: span 1;
+
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        z-index: -1;
+    }
+}
