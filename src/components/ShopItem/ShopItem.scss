@@ -1,16 +1,26 @@
 .shop-item {
     display: flex;
-    // height: 300px;
-    position: relative;
+    flex-direction: column;
 
-    // grid-column: span 1;
+    &__content {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+    }
 
+    &__price {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    &__title {
+        font-size: 2rem;
+        font-weight: 500;
+    }
 
     &__image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        object-fit: cover;
-        z-index: -1;
+        height: 100%;
+        width: 30rem;
     }
 }

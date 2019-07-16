@@ -1,12 +1,4 @@
 .shop-page {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-}
-
-.shop-category {
-    display: grid;
-    // height: 300px;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: column;
 }
