@@ -1,0 +1,30 @@
+.sign-in {
+    text-align: center;
+    width: 35vw;
+    &__title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+    &__span {
+        font-size: 1.6rem;
+        font-weight: 200;
+    }
+
+
+    .form-container {
+        margin-top: 2rem;
+        & > *:not(:last-child) {
+            margin-bottom: 4rem;
+        }
+    }
+
+    .submit-container {
+        display: flex;
+        justify-content: center;
+
+        & > *:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}

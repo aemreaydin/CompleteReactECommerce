@@ -1,0 +1,29 @@
+@import '../../scss/Palette';
+
+.btn {
+    font-size: 1.6rem;
+    font-family: inherit;
+    text-transform: capitalize;
+    padding: 1rem;
+    min-width: 18rem;
+    height: 5rem;
+    cursor: pointer;
+
+    border: .1rem solid $color-grey-900;
+
+
+    &-submit {
+        background-color: white;
+        color: $color-grey-900;
+    }
+    &-submit--google {
+        background-color: $color-blue-google;
+        color: $color-white;
+    }
+
+    transition: all .25s;
+    &-submit:hover {
+        background-color: $color-grey-900;
+        color: $color-white;
+    }
+}

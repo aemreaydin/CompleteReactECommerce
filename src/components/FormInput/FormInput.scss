@@ -1,0 +1,36 @@
+@import '../../scss/Palette';
+
+.form-input {
+    label {
+        color: rgba($color-grey-900, 1);
+        display: inline-block;
+        text-transform: capitalize;
+        margin-bottom: .4rem;
+
+        font-size: 2rem;
+    }
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        position: relative;
+        display: block;
+
+        border: none;
+        border-bottom: .2rem solid rgba($color-grey-900, .4);
+        font-size: 1.6rem;
+
+        padding: 1rem;
+
+        transition: border .5s;
+        &:focus {
+            border-bottom: .2rem solid $color-grey-900;
+        }
+        &:valid {
+            border-bottom: .2rem solid $color-green-valid;
+        }
+        &:invalid {
+            box-shadow: none;
+        }
+    }
+
+}
