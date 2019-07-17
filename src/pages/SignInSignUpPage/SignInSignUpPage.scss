@@ -1,0 +1,16 @@
+.sign-in-up-page {
+    display: flex;
+    height: 95%;
+
+    padding: 10rem;
+
+    align-items: flex-start;
+
+    & > * {
+        flex: 1 1 0;
+
+        &:not(:last-child) {
+            margin-right: 10rem;
+        }
+    }
+}

@@ -51,6 +51,7 @@ class SignIn extends React.Component<SignInProps, SignInState> {
                     <FormInput name="email"
                             type="email"
                             value={email}
+                            label="email"
                             id="email"
                             htmlFor="email"
                             placeholder="Enter your email"
@@ -58,6 +59,7 @@ class SignIn extends React.Component<SignInProps, SignInState> {
                     <FormInput name="password"
                             type="password"
                             value={password}
+                            label="password"
                             id="password"
                             htmlFor="password"
                             placeholder="Enter your password"

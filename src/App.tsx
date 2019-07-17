@@ -5,9 +5,17 @@ import ShopPage from './pages/Shoppage/Shoppage';
 import Header from './components/Header/Header';
 import SignInSignUpPage from './pages/SignInSignUpPage/SignInSignUpPage';
 
-import firebase, { auth } from './firebase/firebase.utils';
+import firebase, { auth, createUser } from './firebase/firebase.utils';
 
 import './App.scss';
+
+export interface UserData {
+  uid: string;
+  displayName: string;
+  email: string;
+  createdAt: Date;
+  photoURL: string;
+}
 
 interface AppState {
   currentUser: firebase.User | null;
@@ -25,11 +33,20 @@ class App extends React.Component<AppProps, AppState> {
   unsubscribeFromAuth: firebase.Unsubscribe | null = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth) {
+        const query = await createUser(userAuth);
+        if(query) {
+          query.onSnapshot(snapshot => {
+            this.setState({
+              currentUser: snapshot.data() as firebase.User
+            })
+          });
+        }
+      }
 
-      console.log(user);
-    })
+      this.setState({currentUser: userAuth})
+    });
   }
 
   componentWillUnmount() {
@@ -47,7 +64,7 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     const { currentUser } = this.state;
     return (
-      <div>
+      <div style={{height: "100%"}}>
         <Header user={currentUser} signOutUser={this.signOutUser}/>
         <Switch>
           <Route exact path='/' component={HomePage} />

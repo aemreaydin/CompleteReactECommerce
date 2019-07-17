@@ -6,6 +6,7 @@ interface FormInputProps {
     name: string;
     type: string;
     id: string;
+    label: string;
     placeholder?: string | undefined;
     value?: string | number | string[];
     htmlFor?: string | undefined;
@@ -14,14 +15,14 @@ interface FormInputProps {
     onSubmit?(event: React.FormEvent<HTMLFormElement>): void | undefined;
 }
 
-const FormInput : React.FC<FormInputProps> = ({name, type, value, id, htmlFor, onChange, placeholder, inputClassName}) => (
+const FormInput : React.FC<FormInputProps> = ({name, type, label, value, id, htmlFor, onChange, placeholder, inputClassName}) => (
     <div className={`form-input form-input__${name}`}>
         {htmlFor
             ?
                 <label
                     className="form-input__label"
                     htmlFor={htmlFor}>
-                    {name}
+                    {label}
                 </label>
             :
                 null
