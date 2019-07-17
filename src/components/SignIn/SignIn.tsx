@@ -3,6 +3,8 @@ import React from 'react';
 import FormInput from '../../components/FormInput/FormInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
+import { signInWithGoogle, signInWithGithub } from '../../firebase/firebase.utils';
+
 import './SignIn.scss';
 
 interface SignInProps {}
@@ -20,6 +22,7 @@ class SignIn extends React.Component<SignInProps, SignInState> {
             password: ''
         }
     }
+
 
     handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -61,7 +64,8 @@ class SignIn extends React.Component<SignInProps, SignInState> {
                             onChange={this.handleChange} />
                     <div className="submit-container">
                         <CustomButton className="btn btn-submit">Sign In With Email</CustomButton>
-                        <CustomButton className="btn btn-submit btn-submit--google">Sign In Using Google</CustomButton>
+                        <CustomButton className="btn btn-submit btn-submit--google" onClick={signInWithGoogle}>Sign In With Google</CustomButton>
+                        <CustomButton className="btn btn-submit btn-submit--github" onClick={signInWithGithub}>Sign In With Github</CustomButton>
                     </div>
                 </form>
             </div>

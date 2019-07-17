@@ -20,6 +20,10 @@
         background-color: $color-blue-google;
         color: $color-white;
     }
+    &-submit--github {
+        background-color: $color-green-github;
+        color: $color-white;
+    }
 
     transition: all .25s;
     &-submit:hover {

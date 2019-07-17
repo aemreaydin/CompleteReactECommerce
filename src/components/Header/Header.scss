@@ -10,11 +10,14 @@
 
     &-nav__link {
         background: transparent;
+        display: inline;
 
 
         font-family: inherit;
         font-size: 1.8rem;
         text-transform: uppercase;
+
+        cursor: pointer;
 
         &:not(:first-child) {
             margin-left: 2rem;
