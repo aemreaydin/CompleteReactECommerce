@@ -9,13 +9,6 @@ import firebase, { auth, createUser } from './firebase/firebase.utils';
 
 import './App.scss';
 
-export interface UserData {
-  uid: string;
-  displayName: string;
-  email: string;
-  createdAt: Date;
-  photoURL: string;
-}
 
 interface AppState {
   currentUser: firebase.User | null;
@@ -38,7 +31,6 @@ class App extends React.Component<AppProps, AppState> {
         const query = await createUser(userAuth);
         if(query) {
           query.onSnapshot(snapshot => {
-            console.log(snapshot.data());
             this.setState({
               currentUser: {...snapshot.data() as firebase.User}
             })
@@ -55,17 +47,10 @@ class App extends React.Component<AppProps, AppState> {
     }
   }
 
-  signOutUser() {
-    auth.signOut()
-      .then(() => console.log("User signed out"))
-      .catch(error => console.log(error));
-  }
-
   render() {
-    const { currentUser } = this.state;
     return (
       <div style={{height: "100%"}}>
-        <Header user={currentUser} signOutUser={this.signOutUser}/>
+        <Header/>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />

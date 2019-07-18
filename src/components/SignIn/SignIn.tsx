@@ -74,8 +74,8 @@ class SignIn extends React.Component<SignInProps, SignInState> {
                             onChange={this.handleChange} />
                     <div className="submit-container">
                         <CustomButton className="btn btn-submit">Sign In With Email</CustomButton>
-                        <CustomButton className="btn btn-submit btn-submit--google" onClick={signInWithGoogle}>Sign In With Google</CustomButton>
-                        <CustomButton className="btn btn-submit btn-submit--github" onClick={signInWithGithub}>Sign In With Github</CustomButton>
+                        <CustomButton type="button" className="btn btn-submit btn-submit--google" onClick={signInWithGoogle}>Sign In With Google</CustomButton>
+                        <CustomButton type="button" className="btn btn-submit btn-submit--github" onClick={signInWithGithub}>Sign In With Github</CustomButton>
                     </div>
                 </form>
             </div>
