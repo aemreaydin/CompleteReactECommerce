@@ -9,6 +9,11 @@
 
     margin-bottom: 2.4rem;
 
+    &-nav {
+        display: flex;
+        align-items: center;
+    }
+
     &-nav__link {
         background: transparent;
         display: inline;

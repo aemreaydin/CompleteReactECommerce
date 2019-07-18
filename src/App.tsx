@@ -8,11 +8,11 @@ import ShopPage from './pages/Shoppage/Shoppage';
 import Header from './components/Header/Header';
 import SignInSignUpPage from './pages/SignInSignUpPage/SignInSignUpPage';
 
-import { setCurrentUserAction } from './redux/userReducer/actions';
+import { setCurrentUserAction } from './redux/user/actions';
 import firebase, { auth, createUser } from './firebase/firebase.utils';
 
 import './App.scss';
-import { FirebaseUser } from './redux/userReducer/types';
+import { FirebaseUser } from './redux/user/types';
 import { AppState } from './redux';
 
 interface AppProps {

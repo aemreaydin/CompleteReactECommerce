@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../redux';
-import { FirebaseUser } from '../../redux/userReducer/types';
+import { FirebaseUser } from '../../redux/user/types';
 
 import './Header.scss';
+import CartIcon from '../CartIcon/CartIcon';
+import CartDropdown from '../CartDropdown/CartDropdown';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 
@@ -28,8 +30,9 @@ const Header : React.FC<HeaderProps> = ({currentUser}) => (
                 (<div className="header-nav__link" onClick={() => auth.signOut()}>Sign Out</div>) :
                 (<Link to='/signin' className="header-nav__link">Sign In</Link>)
             }
-            <Link to='/' className="header-nav__link">Cart</Link>
+            <CartIcon additionalClass="header-nav__link"/>
         </nav>
+        <CartDropdown />
     </div>
 )
 

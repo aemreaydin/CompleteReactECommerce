@@ -1,5 +1,5 @@
 export type FirebaseUser = firebase.User | null;
-export interface User {
+export interface UserState {
     currentUser: FirebaseUser;
 }
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
