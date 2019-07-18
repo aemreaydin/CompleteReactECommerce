@@ -1,43 +1,38 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
 import HomePage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shoppage/Shoppage';
 import Header from './components/Header/Header';
 import SignInSignUpPage from './pages/SignInSignUpPage/SignInSignUpPage';
 
+import { setCurrentUserAction } from './redux/userReducer/actions';
 import firebase, { auth, createUser } from './firebase/firebase.utils';
 
 import './App.scss';
+import { FirebaseUser } from './redux/userReducer/types';
 
-
-interface AppState {
-  currentUser: firebase.User | null;
+interface AppProps {
+  setCurrentUser: typeof setCurrentUserAction;
 }
-interface AppProps {}
 
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
-    super(props);
-
-    this.state = {
-      currentUser: null
-    }
-  }
+class App extends React.Component<AppProps> {
   unsubscribeFromAuth: firebase.Unsubscribe | null = null;
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      const { setCurrentUser } = this.props;
       if(userAuth) {
         const query = await createUser(userAuth);
         if(query) {
           query.onSnapshot(snapshot => {
-            this.setState({
-              currentUser: {...snapshot.data() as firebase.User}
-            })
+            setCurrentUser(snapshot.data() as FirebaseUser)
           });
         }
       }
-      this.setState({currentUser: userAuth})
+      setCurrentUser(userAuth)
     });
   }
 
@@ -46,6 +41,10 @@ class App extends React.Component<AppProps, AppState> {
       this.unsubscribeFromAuth();
     }
   }
+
+  // setCurrentUser = (user: FirebaseUser) => {
+  //   this.props.setCurrentUser(user);
+  // }
 
   render() {
     return (
@@ -61,4 +60,8 @@ class App extends React.Component<AppProps, AppState> {
   }
 }
 
-export default App;
+const mapDispatchtoProps = (dispatch: Dispatch) => ({
+  setCurrentUser: (user: FirebaseUser) => dispatch(setCurrentUserAction(user))
+});
+
+export default connect(null, mapDispatchtoProps)(App);
