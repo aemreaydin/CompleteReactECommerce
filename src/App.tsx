@@ -38,13 +38,13 @@ class App extends React.Component<AppProps, AppState> {
         const query = await createUser(userAuth);
         if(query) {
           query.onSnapshot(snapshot => {
+            console.log(snapshot.data());
             this.setState({
-              currentUser: snapshot.data() as firebase.User
+              currentUser: {...snapshot.data() as firebase.User}
             })
           });
         }
       }
-
       this.setState({currentUser: userAuth})
     });
   }

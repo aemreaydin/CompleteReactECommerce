@@ -15,20 +15,19 @@ var firebaseConfig = {
 export const createUser = async (userAuth, additionalData) => {
     if(!userAuth) return;
     let query = firestore.collection('users').doc(userAuth.uid);
-    console.log(userAuth);
     // let query = firestore.doc(`users/${userAuth.uid}`);
     let queryResponse = await query.get();
 
     if(!queryResponse.exists) {
         console.log('Adding new user to the database.');
         try {
-            const { uid, displayName, email, photoURL } = userAuth;
+            const { displayName, email, photoURL } = userAuth;
+            const createdAt = new Date();
             await query.set({
-                uid,
                 displayName,
                 email,
                 photoURL,
-                createdAt: new Date(),
+                createdAt,
                 ...additionalData
             });
         } catch(error) {
