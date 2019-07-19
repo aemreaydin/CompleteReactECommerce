@@ -1,7 +1,8 @@
 import React from 'react';
 
 import ShopPreview from '../../components/ShopPreview/ShopPreview';
-import { ShopCategory, ShopCollection } from './ShopData';
+import { ShopCategory } from '../../types';
+import { ShopCollection } from './ShopData';
 import './Shoppage.scss';
 
 interface ShopPageProps {}

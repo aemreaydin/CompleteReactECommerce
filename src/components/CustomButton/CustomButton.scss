@@ -8,26 +8,34 @@
     min-width: 18rem;
     height: 5rem;
     cursor: pointer;
-
     border: .1rem solid $color-grey-900;
-
-
-    &-submit {
-        background-color: white;
-        color: $color-grey-900;
-    }
-    &-submit--google {
-        background-color: $color-blue-google;
-        color: $color-white;
-    }
-    &-submit--github {
-        background-color: $color-green-github;
-        color: $color-white;
-    }
-
     transition: all .25s;
-    &-submit:hover {
+
+    background-color: white;
+    color: $color-grey-900;
+
+    &:hover {
         background-color: $color-grey-900;
         color: $color-white;
     }
+
+    &--google {
+        background-color: $color-blue-google;
+        color: $color-white;
+    }
+    &--github {
+        background-color: $color-green-github;
+        color: $color-white;
+    }
+    &--inverted {
+        background-color: $color-grey-900;
+        color: $color-white;
+
+        &:hover {
+            background-color: white;
+            color: $color-grey-900;
+        }
+    }
+
+
 }

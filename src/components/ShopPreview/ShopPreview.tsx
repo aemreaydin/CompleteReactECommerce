@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ShopItem from '../ShopItem/ShopItem';
-import { ShopCategory } from '../../pages/Shoppage/ShopData';
+import { ShopCategory } from '../../types';
 
 import './ShopPreview.scss';
 
@@ -12,7 +12,7 @@ const ShopPreview : React.FC<ShopCategory> = ({ title, items }) => (
         {
             items
             .filter((item, index) => index < 4)
-            .map(({id, ...otherShopItemProps}) => (<ShopItem key={id} id={id} {...otherShopItemProps}/>))
+            .map(item => (<ShopItem key={item.id} item={item}/>))
         }
         </div>
     </div>

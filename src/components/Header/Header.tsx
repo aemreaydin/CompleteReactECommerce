@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { AppState } from '../../redux';
 import { FirebaseUser } from '../../redux/user/types';
+import { CartVisibility } from '../../redux/cart/types';
 
 import './Header.scss';
 import CartIcon from '../CartIcon/CartIcon';
@@ -13,9 +14,10 @@ import { auth } from '../../firebase/firebase.utils';
 
 interface HeaderProps {
     currentUser: FirebaseUser;
+    cartVisibility: CartVisibility;
 }
 
-const Header : React.FC<HeaderProps> = ({currentUser}) => (
+const Header : React.FC<HeaderProps> = ({currentUser, cartVisibility}) => (
     <div className="header">
         <div className="header__logo">
             <Link to='/'>
@@ -32,12 +34,15 @@ const Header : React.FC<HeaderProps> = ({currentUser}) => (
             }
             <CartIcon additionalClass="header-nav__link"/>
         </nav>
-        <CartDropdown />
+        {
+            cartVisibility ? <CartDropdown /> : null
+        }
     </div>
 )
 
 const mapStateToProps = (state: AppState) => ({
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    cartVisibility: state.cartReducer.visibility,
 });
 
 export default connect(mapStateToProps)(Header);

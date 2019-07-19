@@ -1,13 +1,37 @@
+@import '../../scss/Palette';
 .shop-item {
     display: flex;
     flex-direction: column;
-
+    position: relative;
     &__content {
         margin-top: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0 1rem;
+    }
+
+    .btn {
+        position: absolute;
+        width: 80%;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        display: none;
+
+        transition: all .15s;
+    }
+
+
+
+    &:hover {
+        .shop-item__image {
+            opacity: .8;
+        }
+        .btn {
+            display: block;
+            opacity: .9;
+        }
     }
 
     &__price {
@@ -22,5 +46,7 @@
     &__image {
         height: 100%;
         width: 30rem;
+
+        transition: all .15s ease-out;
     }
 }

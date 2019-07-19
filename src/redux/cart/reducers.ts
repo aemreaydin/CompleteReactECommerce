@@ -1,7 +1,8 @@
-import { CartState, CartActionTypes, TOGGLE_CART_VISIBILITY } from './types';
-
+import { CartItem, CartState, CartActionTypes, TOGGLE_CART_VISIBILITY, ADD_CART_ITEM } from './types';
+import { addItemToCart} from './utils';
 const INITIAL_STATE : CartState = {
-    visibility: false
+    visibility: false,
+    cartItems: []
 }
 
 export const cartReducer = (state = INITIAL_STATE, action: CartActionTypes) : CartState => {
@@ -10,6 +11,11 @@ export const cartReducer = (state = INITIAL_STATE, action: CartActionTypes) : Ca
             return {
                 ...state,
                 visibility: !state.visibility
+            }
+        case ADD_CART_ITEM:
+            return {
+                ...state,
+                cartItems: addItemToCart(state.cartItems, action.payload as CartItem)
             }
         default:
             return state;
