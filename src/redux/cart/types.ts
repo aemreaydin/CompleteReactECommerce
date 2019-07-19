@@ -3,13 +3,14 @@ export const TOGGLE_CART_VISIBILITY = "TOGGLE_CART_VISIBILITY";
 export const ADD_CART_ITEM = 'ADD_CART_ITEM';
 
 export type CartVisibility = boolean;
-export interface CartItem extends ShopItemData {
+
+export interface CartItemInfo extends ShopItemData {
     quantity: number;
 }
 
 export interface CartState {
     visibility: boolean;
-    cartItems: CartItem[];
+    cartItems: CartItemInfo[];
 }
 
 // export type state = CartItem[] & CartVisibility
@@ -20,7 +21,7 @@ interface ToggleCartVisibilityAction {
 }
 interface AddCartItemAction {
     type: string;
-    payload: CartItem;
+    payload: CartItemInfo;
 }
 
 export type CartActionTypes = ToggleCartVisibilityAction | AddCartItemAction;

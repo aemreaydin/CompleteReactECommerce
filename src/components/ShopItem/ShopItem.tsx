@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { addCartItem} from '../../redux/cart/actions';
-import { CartItem } from '../../redux/cart/types';
+import { CartItemInfo } from '../../redux/cart/types';
 
 import './ShopItem.scss';
 
@@ -27,7 +27,7 @@ const ShopItem : React.FC<ShopItemProps> = ({addCartItem, item: {imageUrl, name,
 );
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    addCartItem: (item: CartItem) => dispatch(addCartItem(item))
+    addCartItem: (item: CartItemInfo) => dispatch(addCartItem(item))
 });
 
 export default connect(null, mapDispatchToProps)(ShopItem);
