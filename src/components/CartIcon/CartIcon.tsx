@@ -2,9 +2,9 @@ import React from 'react';
 import { ReactComponent as Logo } from '../../assets/shopping-bag.svg';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
 import { AppState } from '../../redux';
-import { CartVisibility } from '../../redux/cart/types';
 import { toggleCartVisibility } from '../../redux/cart/actions';
 import { selectCartItemCount } from '../../redux/cart/selectors';
 
@@ -12,14 +12,15 @@ import './CartIcon.scss';
 
 
 interface CartIconProps {
-    // itemCount: number;
     itemQuantity: number;
-    cartDropdownVisibility: CartVisibility
-    toggleCartVisibility: typeof toggleCartVisibility;
+    toggleCartVisibility?: typeof toggleCartVisibility;
+}
+
+interface StaticCartIconProps {
     additionalClass?: string;
 }
 
-const CartIcon : React.FC<CartIconProps> = (props) => (
+const CartIcon : React.FC<CartIconProps & StaticCartIconProps> = (props) => (
     <div className={`cart-icon ${props.additionalClass}`} onClick={props.toggleCartVisibility}>
         <Logo className="cart-icon__image"></Logo>
         <span className="cart-icon__count">{props.itemQuantity}</span>
@@ -27,9 +28,8 @@ const CartIcon : React.FC<CartIconProps> = (props) => (
 );
 
 
-const mapStateToProps = (state: AppState) => ({
-    cartDropdownVisibility: state.cartReducer.visibility,
-    itemQuantity: selectCartItemCount(state)
+const mapStateToProps = createStructuredSelector<AppState, CartIconProps>({
+    itemQuantity: selectCartItemCount
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

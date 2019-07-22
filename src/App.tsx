@@ -14,13 +14,18 @@ import firebase, { auth, createUser } from './firebase/firebase.utils';
 import './App.scss';
 import { FirebaseUser } from './redux/user/types';
 import { AppState } from './redux';
+import { selectCurrentUser } from './redux/user/selector';
+import { createStructuredSelector} from 'reselect';
 
 interface AppProps {
   currentUser: FirebaseUser;
+}
+
+interface AppActionProps {
   setCurrentUser: typeof setCurrentUserAction;
 }
 
-class App extends React.Component<AppProps> {
+class App extends React.Component<AppProps & AppActionProps> {
   unsubscribeFromAuth: firebase.Unsubscribe | null = null;
 
   componentDidMount() {
@@ -62,8 +67,8 @@ class App extends React.Component<AppProps> {
   }
 }
 
-const mapStateToProps = (state: AppState) => ({
-  currentUser: state.userReducer.currentUser
+const mapStateToProps = createStructuredSelector<AppState, AppProps>({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
