@@ -1,12 +1,10 @@
 import React from 'react';
 import Menu from '../../components/Menu/Menu';
 
-import './Homepage.scss';
-
-
+import './HomePage.scss';
 
 const HomePage : React.FC = () => (
-    <div className="homepage">
+    <div className="home-page">
         <Menu />
     </div>
 );

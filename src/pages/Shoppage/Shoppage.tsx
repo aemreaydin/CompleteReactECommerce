@@ -3,7 +3,7 @@ import React from 'react';
 import ShopPreview from '../../components/ShopPreview/ShopPreview';
 import { ShopCategory } from '../../types';
 import { ShopCollection } from './ShopData';
-import './Shoppage.scss';
+import './ShopPage.scss';
 
 interface ShopPageProps {}
 interface ShopPageState {
