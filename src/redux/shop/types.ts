@@ -1,9 +1,12 @@
 import { ShopCategory } from '../../types';
 
-export type ShopCollectionInfo = ShopCategory[];
+export type ShopCollectionInfo = ShopCategory;
 
+export interface ShopCollectionsObject {
+    [key: string]: ShopCategory;
+}
 export interface ShopState {
-    collection: ShopCollectionInfo;
+    collection: ShopCollectionsObject;
 }
 
 export interface ShopAction {

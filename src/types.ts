@@ -16,3 +16,8 @@ export interface Section {
     linkUrl: string;
     imageUrl: string;
 }
+
+export type CollectionParamStrings = 'hats' | 'sneakers' | 'jackets' | 'womens' | 'mens';
+export interface CollectionUrlParam {
+    collectionID: CollectionParamStrings;
+}

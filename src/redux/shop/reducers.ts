@@ -1,7 +1,7 @@
 import { ShopState, ShopAction } from './types';
 const INITIAL_STATE : ShopState = {
-    collection: [
-        {
+    collection: {
+        hats: {
           id: 1,
           title: 'Hats',
           routeName: 'hats',
@@ -62,7 +62,7 @@ const INITIAL_STATE : ShopState = {
             }
           ]
         },
-        {
+        sneakers: {
           id: 2,
           title: 'Sneakers',
           routeName: 'sneakers',
@@ -117,7 +117,7 @@ const INITIAL_STATE : ShopState = {
             }
           ]
         },
-        {
+        jackets: {
           id: 3,
           title: 'Jackets',
           routeName: 'jackets',
@@ -154,7 +154,7 @@ const INITIAL_STATE : ShopState = {
             }
           ]
         },
-        {
+        womens: {
           id: 4,
           title: 'Womens',
           routeName: 'womens',
@@ -203,7 +203,7 @@ const INITIAL_STATE : ShopState = {
             }
           ]
         },
-        {
+        mens: {
           id: 5,
           title: 'Mens',
           routeName: 'mens',
@@ -246,7 +246,7 @@ const INITIAL_STATE : ShopState = {
             }
           ]
         }
-      ]
+    }
 }
 
 export const shopReducer = (state = INITIAL_STATE, action: ShopAction) => {
