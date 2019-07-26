@@ -10,3 +10,9 @@ export interface ShopCategory {
     routeName: string;
     items: ShopItemData[];
 }
+export interface Section {
+    id: number;
+    title: string;
+    linkUrl: string;
+    imageUrl: string;
+}

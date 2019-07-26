@@ -6,10 +6,14 @@ import logger from 'redux-logger';
 
 import { userReducer } from './user/reducers';
 import { cartReducer } from './cart/reducers';
+import { directoryReducer } from './directory/reducers';
+import { shopReducer } from './shop/reducers';
 
 const rootReducer = combineReducers({
     userReducer,
-    cartReducer
+    cartReducer,
+    directoryReducer,
+    shopReducer
 });
 
 const persistConfig = {

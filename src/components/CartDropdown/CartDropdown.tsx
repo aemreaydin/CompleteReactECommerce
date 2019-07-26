@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector} from 'reselect';
+import { createStructuredSelector } from 'reselect';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import CustomButton from '../CustomButton/CustomButton';
