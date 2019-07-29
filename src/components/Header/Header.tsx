@@ -6,6 +6,8 @@ import { AppState } from '../../redux';
 import { FirebaseUser } from '../../redux/user/types';
 import { CartVisibility } from '../../redux/cart/types';
 
+import { HeaderContainer, LogoContainer, NavContainer, NavLinkContainer } from './styles';
+
 import './Header.scss';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
@@ -21,26 +23,24 @@ interface HeaderProps {
 }
 
 const Header : React.FC<HeaderProps> = ({currentUser, cartVisibility}) => (
-    <div className="header">
-        <div className="header__logo">
-            <Link to='/'>
-                <Logo/>
-            </Link>
-        </div>
-        <nav className="header-nav">
-            <Link to='/shop' className="header-nav__link">Shop</Link>
-            <Link to='/' className="header-nav__link">Contact</Link>
+    <HeaderContainer>
+        <LogoContainer to='/'>
+            <Logo/>
+        </LogoContainer>
+        <NavContainer>
+            <NavLinkContainer to='/shop'>Shop</NavLinkContainer>
+            <NavLinkContainer to='/'>Contact</NavLinkContainer>
             {
                 currentUser ?
                 (<div className="header-nav__link" onClick={() => auth.signOut()}>Sign Out</div>) :
-                (<Link to='/signin' className="header-nav__link">Sign In</Link>)
+                (<NavLinkContainer to='/signin'>Sign In</NavLinkContainer>)
             }
             <CartIcon additionalClass="header-nav__link"/>
-        </nav>
+        </NavContainer>
         {
             cartVisibility ? <CartDropdown /> : null
         }
-    </div>
+    </HeaderContainer>
 )
 
 const mapStateToProps = createStructuredSelector<AppState, HeaderProps>({

@@ -21,7 +21,6 @@ const persistConfig = {
     storage,
     whitelist: ['cartReducer']
 };
-export type AppState = ReturnType<typeof persistedReducer>;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -33,6 +32,7 @@ if(process.env.NODE_ENV === 'development') {
 const middlewareEnhancer = applyMiddleware(...middlewares);
 export const store = createStore(persistedReducer,
     composeWithDevTools(middlewareEnhancer));
-
-
+    
+    
+export type AppState = ReturnType<typeof persistedReducer>;
 export const persistor = persistStore(store);
