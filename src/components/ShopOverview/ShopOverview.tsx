@@ -12,13 +12,13 @@ import { selectShopCollectionsForPreview } from '../../redux/shop/selectors';
 import './ShopOverview.scss';
 
 interface ShopOverviewProps {
-    collections: ShopCollectionInfo[];
+    collections: ShopCollectionInfo[] | undefined;
 }
 
 const ShopOverview : React.FC<ShopOverviewProps> = ({ collections }) => (
     <div className="shop-overview">
     {
-        collections.map(({id, ...otherCollectionProps}) => (
+        collections && collections.map(({id, ...otherCollectionProps}) => (
             <ShopPreview key={id} id={id} {...otherCollectionProps} />
         ))
     }

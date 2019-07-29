@@ -8,7 +8,11 @@ const selectShop = (state : AppState) => state.shopReducer;
 export const selectShopCollections = createSelector(selectShop, state => state.collections);
 
 export const selectShopCollectionsForPreview = createSelector(selectShopCollections,
-    collections => Object.keys(collections).map(key => collections[key]));
+    collections => collections ? Object.keys(collections).map(key => collections[key]) : undefined);
 
 export const selectShopCollection = (paramString: CollectionParamStrings) => createSelector(selectShopCollections,
-    sections => sections[paramString])
+    sections => sections ? sections[paramString]: undefined);
+
+export const selectIsFetching = createSelector(selectShop, state => state.isFetching);
+
+export const selectIsCollectionsLoaded = createSelector(selectShop, state => !!state.collections);

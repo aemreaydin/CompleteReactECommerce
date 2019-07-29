@@ -1,8 +1,9 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware, Middleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import { userReducer } from './user/reducers';
 import { cartReducer } from './cart/reducers';
@@ -25,7 +26,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
-const middlewares = [];
+const middlewares: Array<Middleware> = [thunk];
 if(process.env.NODE_ENV === 'development') {
     middlewares.push(logger);
 }
