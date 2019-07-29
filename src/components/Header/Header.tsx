@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 import { AppState } from '../../redux';
 import { FirebaseUser } from '../../redux/user/types';
 import { CartVisibility } from '../../redux/cart/types';
 
-import { HeaderContainer, LogoContainer, NavContainer, NavLinkContainer } from './styles';
+import { HeaderContainer, LogoContainer, NavContainer, NavLinkContainer, NavDivContainer } from './styles';
 
 import './Header.scss';
 import CartIcon from '../CartIcon/CartIcon';
@@ -32,7 +31,7 @@ const Header : React.FC<HeaderProps> = ({currentUser, cartVisibility}) => (
             <NavLinkContainer to='/'>Contact</NavLinkContainer>
             {
                 currentUser ?
-                (<div className="header-nav__link" onClick={() => auth.signOut()}>Sign Out</div>) :
+                (<NavDivContainer onClick={() => auth.signOut()}>Sign Out</NavDivContainer>) :
                 (<NavLinkContainer to='/signin'>Sign In</NavLinkContainer>)
             }
             <CartIcon additionalClass="header-nav__link"/>

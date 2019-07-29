@@ -17,9 +17,10 @@ interface CollectionPageProps extends RouteComponentProps<CollectionUrlParam> {
 }
 
 const CollectionPage: React.FC<CollectionPageProps> = ({collection}) => {
-    const { title, items } = collection;
-    return (
-    <div className="collection-page">
+    // if(collection) {
+        const { title, items } = collection;
+        return (
+            <div className="collection-page">
         <h2 className="title">{title}</h2>
         <div className="items">
             {
@@ -27,7 +28,9 @@ const CollectionPage: React.FC<CollectionPageProps> = ({collection}) => {
             }
         </div>
     </div>
-)};
+        )       
+    // } else return null;
+};
 
 const mapStateToProps = (state: AppState, ownProps: CollectionPageProps): CollectionPageProps => ({
     ...ownProps,

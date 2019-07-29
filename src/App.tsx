@@ -16,7 +16,7 @@ import './App.scss';
 import { FirebaseUser } from './redux/user/types';
 import { AppState } from './redux';
 import { selectCurrentUser } from './redux/user/selector';
-import { createStructuredSelector} from 'reselect';
+import { createStructuredSelector } from 'reselect';
 
 interface AppProps {
   currentUser: FirebaseUser;
@@ -40,6 +40,7 @@ class App extends React.Component<AppProps & AppActionProps> {
           });
         }
       }
+
       setCurrentUser(userAuth)
     });
   }
@@ -70,7 +71,7 @@ class App extends React.Component<AppProps & AppActionProps> {
 }
 
 const mapStateToProps = createStructuredSelector<AppState, AppProps>({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
